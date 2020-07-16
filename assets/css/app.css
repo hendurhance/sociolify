@@ -499,7 +499,7 @@ footer{
         margin-top: 1em;
     }
     
-    .contact-section{
+    .contact-section, .contact-section-form{
         margin-top: 2em;
     }
 }
