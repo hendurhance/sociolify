@@ -20,7 +20,7 @@
    <nav class="navbar navbar-expand-lg navbar-dark bg-mine static-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img class="logo" src="assets/img/sociolify.png" alt="">
+          <img class="logo" src="assets/img/Sociolify.png" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-align-right hamburger"></i>
@@ -33,10 +33,10 @@
               </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i>   Login</a>
+                <a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt"></i>   Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-user"></i>   Registration</a>
+              <a class="nav-link" href="register.php"><i class="fas fa-user"></i>   Registration</a>
             </li>
          </ul>
        </div>
