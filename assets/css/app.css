@@ -312,10 +312,95 @@
 /* CONTACT */
 .contact{
     padding: 3em 0 !important;
-    background: rgba(0,0,0,0.5), url(../img/blog-3.jpg);
+    background-image:  linear-gradient(rgba(0,0,0,0.5), rgba(0, 0, 0, 0.6)), url(../img/contact.png);
     background-size: cover;
     background-position: center;
 }
+
+.contact-section{
+    color: #f1f1f1;
+    display: flex;
+}
+
+.contact-section i{
+    font-size: 3em;
+}
+
+.contact-p{
+    display: block;
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+.contact-p p{
+    font-weight: 700;
+    font-size: 1.3em;
+    line-height: .3;
+}
+
+.contact-section-form input{
+    width: 100%;
+    padding: .5em;
+    border-radius: 10px;
+    border: 0;
+}
+
+.contact-section-form input:focus{
+    outline: none;
+}
+
+.contact-section-form button{
+    background-color: #375d4e;
+    width: 100%;
+    margin-top: 0.1em;
+    color: #f1f1f1;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.contact-section-form button:hover{
+     color: #f1f1f1;
+     background-color: #375d4ebb;
+}
+
+/* FOOTER */
+footer{
+    padding: 3em 0 0.5em 0!important;
+    background-color: #375d4e;
+    color: #f1f4f1;
+}
+
+.footer-content{
+    text-align: center;
+}
+
+.footer-content ul{
+    display: flex;
+    align-self: center;
+}
+
+.footer-content li{
+    padding: .5em;
+    list-style-type: none;
+}
+
+.footer-content ul li a{
+    font-size: 1.5em;
+    color: #eefeee;
+}
+
+.footer-content select{
+    width: 100%;
+    padding: .5em;
+    border-radius: 20px;
+    background-color: #f1f4f1ab;
+}
+
+
+
+
+
+
 
 
 

@@ -328,26 +328,72 @@
         <div class="row">
           <div class="col-lg-4 col-md-12 col-sm-12">
             <div class="contact-section">
-              <i class="far fa-envelope-open-text"></i>
+              <i class="fas fa-envelope-open-text"></i>
+              <div class="contact-p">
               <p>+2349091646111</p>
               <p>hendurhance@outlook.com</p>
+              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-12 col-sm-12">
             <div class="contact-section">
-              <i class="far fa-map-marker-alt"></i>
-              <p>99 Radicula Street, Lekki, Lagos, Nigeria.</p>
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="contact-p">
+              <p>99 Radicula Street, Lekki,</p>
+              <p>Lagos, Nigeria.</p>
+              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-12 col-sm-12">
-            <div class="contact-section">
+            <div class="contact-section-form">
               <input placeholder="Email Address..." type="text">
-              <input type="button" value="SUBSCRIBE">
+              <button class="btn">SUBSCRIBE</button>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+<!-- FOOTER -->
+   <footer>
+     <div class="container">
+       <div class="row">
+         <div class="col-lg-4 col-md-12 col-sm-12">
+           <div class="footer-content">
+             <img src="assets/img/Sociolify.png" alt="">
+           </div>
+         </div>
+         <div class="col-lg-4 col-md-12 col-sm-12">
+           <div class="footer-content">
+             <h4>Social Media</h4>
+             <ul>
+               <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+               <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+               <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+               <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+               <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+             </ul>
+           </div>
+         </div>
+         <div class="col-lg-4 col-md-12 col-sm-12">
+           <div class="footer-content">
+             <h4>Quick Links</h4>
+             <select name="" id="">
+               <option>Home</option>
+               <option>Login</option>
+               <option>Register</option>
+             </select>
+           </div>
+         </div>
+       </div>
+       <hr>
+       <div>
+         <p>
+           Copyright © 2020 All Rights Reserved <b>Sociolify</b>
+         </p>
+       </div>
+     </div>
+   </footer>
 
 </body>
     <!-- jQuery -->
