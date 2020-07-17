@@ -28,39 +28,36 @@
        <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.php"><i class="fas fa-home"></i>   Home</a>
+              <a class="nav-link active" href="dashboard.php"><i class="fas fa-user"></i>   Home
+                <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt"></i>   Login</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#"><i class="fas fa-user"></i>   Registration
-                <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i>   Logout</a>
             </li>
          </ul>
        </div>
       </div>
     </nav>
 
-<!-- FORM -->
-   <section class="form">
-     <div class="container">
-       <h3 class="form-h3">Registration</h3>
-       <div class="my-form">
-        <form action="" method="post">
-          <input type="text" placeholder="Full Name">
-          <input type="text" placeholder="Username">
-          <input type="text" placeholder="Email Address">
-          <input type="text" placeholder="Website Address">
-          <input type="text" placeholder="Password">
-          <input type="text" placeholder="Confirm Password">
-          <button type="submit" class="btn btn-submit">REGISTER</button>
-        </form>
-        <p>Already have an account? <a href="login.php">Login Here</a></p>
-       </div>
-     </div>
-   </section>
+<!-- PROFILE -->
 
+    <section class="profile">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="profile-content">
+                        <h3> <i class="fas fa-user"></i> Profile Information</h3>
+                        <p>Your can view your profile information and also make changes to them</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- DASHBOARD -->
+
+    div.container
 </body>
     <!-- jQuery -->
     <script src="libs/js/jquery.slim.min.js"></script>

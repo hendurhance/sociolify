@@ -396,11 +396,111 @@ footer{
     background-color: #f1f4f1ab;
 }
 
+footer p{
+    font-size: 0.9em;
+}
+
+/* FORM */
+
+.form{
+    padding: 3em 20em 0 20em;
+}
+
+.form-h3{
+     font-weight: 700;
+     font-size: 2em;
+     text-transform: uppercase;
+     text-align: center;
+     /* padding-bottom: .1em; */
+}
+
+.my-form{
+    /* background-color: #fff; */
+    padding: 1em 3em 1em 3em;
+    border-radius: 30px;
+    /* box-shadow: 0px 0px 30px 20px rgba(112, 110, 110, 0.04); */
+}
+
+.my-form form input{
+    width: 100%;
+    padding: 5px 5px;
+    margin: 5px 0 5px 0;
+    border-radius: 0;
+    border: #2f302f 2px solid;
+}
+
+.my-form form input::placeholder{
+    color: #2f302f;
+    font-weight: 500;
+}
+
+.my-form form .btn-submit{
+    background-color: #375d4e !important;
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+.my-form form .btn-submit:hover{
+    opacity: .95;
+}
+
+.my-form p{
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.my-form p a{
+    color: #375d4e;
+}
+
+.my-form p a:hover{
+    color: #3f683f;
+    text-decoration: none;
+}
+
+.form-check{
+    margin: .5em 0 .5em 0;
+}
+
+.my-form form .form-check input{
+    /* width: 20px; */
+    left: 0;
+}
+
+.my-form form .form-check input{
+    width: 20px;
+}
 
 
+/* form .checkbox{
+    display: inline-block;
+} */
 
 
+/* PROFILE */
+.profile{
+    padding: 4em 8em !important;
+    background-image:  linear-gradient(rgba(0,0,0,0.6), rgba(0, 0, 0, 0.7)), url(../img/header-img.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+}
 
+.profile-content{
+    color: #f1f1f1;
+}
+
+.profile-content h3{
+    font-weight: 700;
+}
+
+.profile-content p{
+    font-weight: 600;
+}
 
 
 
@@ -472,7 +572,7 @@ footer{
         margin-top: 1em;
     }
     
-    .blog{
+    .blog, .form{
         padding: 3em 0 !important;
     }
     
@@ -480,7 +580,16 @@ footer{
         margin-top: 1em;
     }
 
+    .my-form{
+        padding: 1em  0 1em 0;
+    }
+
+    .profile{
+        padding: 3em 0 !important;
+    }
 }
+
+
 
 
 
