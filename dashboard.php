@@ -57,7 +57,29 @@
 
 <!-- DASHBOARD -->
 
-    div.container
+    <section class="dashboard">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="dashboard-content">
+                       <img src="assets/img/blog-3.jpg" alt="" class="img-fluid">
+                       <h5>Profile Picture</h5>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="dashboard-content">
+                        <h4>Name: </h4>
+                        <hr>
+                        <p>Username: </p>
+                        <p>Email: </p>
+                        <p>Website: </p>
+                        <hr>
+                        <p>Date Created: </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
     <!-- jQuery -->
     <script src="libs/js/jquery.slim.min.js"></script>
