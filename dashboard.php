@@ -32,7 +32,7 @@
                 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i>   Logout</a>
+                <a class="nav-link" href="logout.php"><i class="fas fa-sign-in-alt"></i>   Logout</a>
             </li>
          </ul>
        </div>

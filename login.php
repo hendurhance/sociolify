@@ -1,3 +1,94 @@
+<?php
+//Start session
+session_start();
+
+// Require files
+require "require/config.php";
+require "require/functions.php";
+
+if (isset($_SESSION['id'])) {
+  header("Location: dashboard.php");
+}
+
+
+//Set users info to default
+$username = $password = "";
+$usernameError = $passwordError = "";
+$count = "";
+$msg = "";
+
+//Set cookie
+$cookie_user = "username";
+$cookie_pass = "password";
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  $username = validate_input($_POST["username"]);
+  $password = validate_input($_POST["password"]);
+
+  //Validate info
+  if (empty($_POST["username"])) {
+    $usernameError = "Username is required";
+    $count++;
+  }else{
+    $username = validate_input($_POST["username"]);
+  }
+
+  if (empty($_POST["password"])) {
+    $passwordError = "Password is required";
+    $count++;
+  }else{
+    $password = validate_input($_POST["password"]);
+  }
+  
+
+  //Check for errors
+  if($count == 0){
+     $sql = "SELECT * FROM users WHERE username = '$username'";
+     $result = $connectdb->query($sql);
+
+     //Check if it already exist
+     if ($result->num_rows > 0) {
+       //output error
+       $row = $result->fetch_assoc();
+
+       // Check if records match
+       if (password_verify($password, $row['password'])) {
+
+        // Implementing cookie
+        if (isset($_POST["checkbox"])) {
+          setcookie($cookie_user, $username, time() + (86400 * 30), "/");
+          setcookie($cookie_pass, $password, time() + (86400 * 30), "/");
+        }
+         
+         $_COOKIE["cookie value"];
+         setrawcookie(); 
+
+         // Creating Sessions for users
+         $_SESSION['id'] = $row['id'];
+         $_SESSION['username'] = $row['username'];
+         $_SESSION['email'] = $row['email'];
+         $_SESSION['password'] = $row['password'];
+         $_SESSION['website'] = $row['website'];
+         header("Location: dashboard.php");
+         exit();
+       }else{
+         $passwordError = "Password is invalid, try again";
+         $count++;
+       }
+     }else {
+       $msg = "Username does not exist";
+       $username = $password = "";
+       $count++;
+     }
+  }
+  
+}
+
+
+//
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,18 +138,42 @@
 <section class="form">
      <div class="container">
        <h3 class="form-h3">LOGIN</h3>
+       <p><?php 
+              if($msg != ''){
+              echo '<hr>';
+              echo '<div class="alert alert-danger" role="alert">';
+              echo  $msg;
+              echo '</div>';
+          }?>
+        </p>
        <div class="my-form">
-        <form action="" method="post">
-          <input type="text" placeholder="Username">
-          <input type="text" placeholder="Password">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+        <?php 
+            if(!isset($_COOKIE[$cookie_user])){
+                echo '<input type="text" name="username" placeholder="Username" value="' . $username . '">';
+                echo '<span class="error"> ' . $usernameError . '</span>';
+            } else {
+                echo '<input type="text" name="username" placeholder="Username" value="' . $_COOKIE[$cookie_user] . '">';
+                echo '<span class="error">' .  $usernameError . '</span>';
+            }
+         ?>
+         <?php 
+            if(!isset($_COOKIE[$cookie_pass])){
+                echo '<input type="password" name="password" placeholder="Password" value="' . $password . '">';
+                echo '<span class="error">'. $passwordError . '</span>';
+            } else {
+                echo '<input type="password" name="password" placeholder="Password" value="' . $_COOKIE[$cookie_pass] . '">';
+                echo '<span class="error">' . $passwordError . '</span>';
+            }
+          ?>
           <div class="form-check">
-            <input type="checkbox" name="" class="form-check-input">
+            <input type="checkbox" name="checkbox" class="form-check-input">
             <label for="checkbox" class="form-check-label">Remember Me</label>
           </div>
           <button type="submit" class="btn btn-submit">LOGIN</button>
         </form>
         <p><a href="login.php">Forget your password?</a></p>
-        <p>Don't have an account? <a href="login.php">Register Here</a></p>
+        <p>Don't have an account? <a href="register.php">Register Here</a></p>
        </div>
      </div>
    </section>

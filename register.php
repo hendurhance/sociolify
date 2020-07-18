@@ -3,14 +3,14 @@
 // Require files
 require "require/config.php";
 require "require/functions.php";
-require "libs/PHPMailer-master/PHPMailerAutoload.php"
+require "libs/PHPMailer-master/PHPMailerAutoload.php";
 
 //Set all input to default
 $fname = $username = $email = $website = $password = $confirm_password = "";
 // Set error variable to default
 $nameError = $usernameError = $emailError = $websiteError = $passwordError = $confirm_passwordError = "";
 $count = 0;
-
+$msg = "";
 // Validating and taking user info to database
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $fname = validate_input($_POST["fullname"]);
@@ -120,9 +120,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
            VALUES ('$fname', '$email', '$username', '$hash','$website', '', " . time() . ", '$reset_code', 0)";
       
       if ($connectdb ->query($sql) === TRUE) {
-        echo "Record created successfully";
+        $msg = 'You have registered successfully, click <a href="mail.google.com" target="external"><b>Here</b></a> to Verify';
+
+        $message = "You have beed registered successfully. Click the link below to verify your account: <br><br> 
+        <a href='http://localhost/sociolify/process/account_verify.php?code=$reset_code'>Click here to verify</a>";
+
+        //sending email to the user
+        send_mail($email, $message);
+
+        $fname = $username = $email = $website = $password = $confirm_password = '';
       }else {
-          echo  "Error: " . $sql . "<br>" . $connectdb->error;
+          // echo  "Error: " . $sql . "<br>" . $connectdb->error;
+          echo  "Something went wrong";
       }
   }
 
@@ -138,7 +147,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 ?>
 
 <!-- HTML DOCUMENT -->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -188,6 +196,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
    <section class="form">
      <div class="container">
        <h3 class="form-h3">Registration</h3>
+       <p><?php 
+              if($msg != ''){
+              echo '<hr>';
+              echo '<div class="alert alert-success" role="alert">';
+              echo  $msg;
+              echo '</div>';
+          }?>
+        </p>
        <div class="my-form">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
           <input type="text" value="<?php echo $fname ?>" name="fullname" placeholder="Full Name">
