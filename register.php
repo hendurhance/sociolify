@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $msg = 'You have registered successfully, click <a href="mail.google.com" target="external"><b>Here</b></a> to Verify';
 
         $message = "You have beed registered successfully. Click the link below to verify your account: <br><br> 
-        <a href='http://localhost/sociolify/process/account_verify.php?code=$reset_code'>Click here to verify</a>";
+        <a href='https://www.sociolify.dev/process/verify_account.php?code=$reset_code'>Click here to verify</a>";
 
         //sending email to the user
         send_mail($email, $message);
