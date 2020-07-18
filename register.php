@@ -3,6 +3,7 @@
 // Require files
 require "require/config.php";
 require "require/functions.php";
+require "libs/PHPMailer-master/PHPMailerAutoload.php"
 
 //Set all input to default
 $fname = $username = $email = $website = $password = $confirm_password = "";
@@ -32,13 +33,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
   }
 
+//Validate username
   if (empty($_POST["username"])) {
     $usernameError = "Username is required";
     $count++;
   }else {
     $username =  validate_input($_POST["username"]);
+
+    // SQL Query
+    $sql = "SELECT * FROM users WHERE username = '$username'";
+    $result = $connectdb->query($sql);
+
+    if($result->num_rows > 0){
+      $usernameError = "Username already exists";
+      $count++;
+    }
   }
 
+// Validate emails
   if (empty($_POST["email"])) {
     $emailError = "Email is required";
     $count++;
@@ -49,8 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
        $emailError = "Invalid email";
        $count++;
     }
+
+    // SQL Query
+    $sql = "SELECT * FROM users WHERE email = '$email'";
+    $result = $connectdb->query($sql);
+
+    if($result->num_rows > 0){
+      $emailError = "Email already exists";
+      $count++;
+    }
   }
 
+// Validate website url
   if (empty($_POST["website"])) {
     $websiteError = "Website url is required";
     $count++;
@@ -63,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
   }
 
+// Validate password
   if (empty($_POST["password"])) {
     $passwordError = "Password is required";
     $count++;
@@ -70,13 +93,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $password =  validate_input($_POST["password"]);
   }
 
+// Validate confirm password
   if (empty($_POST["confirmpassword"])) {
     $confirm_passwordError = "Confirm password is required";
     $count++;
   }else {
     $password =  validate_input($_POST["confirmpassword"]);
     // Check if password match
-    if ($confirm_password = !$password) {
+    if ($confirm_password != $password) {
       $confirm_passwordError = "Password didn't match";
       $count++;
     }else {
@@ -166,13 +190,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
        <h3 class="form-h3">Registration</h3>
        <div class="my-form">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-          <input type="text" name="fullname" placeholder="Full Name">
+          <input type="text" value="<?php echo $fname ?>" name="fullname" placeholder="Full Name">
           <span class="error"><?php echo $nameError ?></span>
-          <input type="text" name="username" placeholder="Username">
+          <input type="text" value="<?php echo $username ?>" name="username" placeholder="Username">
           <span class="error"><?php echo $usernameError ?></span>
-          <input type="email" name="email" placeholder="Email Address">
+          <input type="email" value="<?php echo $email ?>" name="email" placeholder="Email Address">
           <span class="error"><?php echo $emailError ?></span>
-          <input type="text" name="website" placeholder="Website Address">
+          <input type="text" value="<?php echo $website ?>" name="website" placeholder="Website Address">
           <span class="error"><?php echo $websiteError ?></span>
           <input type="password" name="password" placeholder="Password">
           <span class="error"><?php echo $passwordError ?></span>
