@@ -475,6 +475,11 @@ footer p{
     width: 20px;
 }
 
+.error{
+    color: red;
+    font-size: 13px;
+}
+
 
 /* form .checkbox{
     display: inline-block;
@@ -598,7 +603,7 @@ footer p{
         padding: 1em  0 1em 0;
     }
 
-    .profile, .dashboardgit {
+    .profile, .dashboard{
         padding: 3em 0 !important;
     }
 }
