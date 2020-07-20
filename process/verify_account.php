@@ -11,14 +11,14 @@ if (isset($_GET['code'])) {
     $reset_code = validate_input($_GET['code']);
 
     $sql = "SELECT * FROM users WHERE reset_code = '$reset_code'";
-    $result->query($sql);
+    $result = $connectdb->query($sql);
 
     if ($result->num_rows > 0) {
         
         // Data output
 
         $row = $result->fetch_assoc();
-        $sql = "UPDATE users SET is_active = 1, reset_code = '$reset_code'";
+        $sql = "UPDATE users SET is_active = 1, reset_code = '' WHERE reset_code = '$reset_code'";
 
         echo "Verifying account...";
 

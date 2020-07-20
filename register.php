@@ -120,10 +120,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
            VALUES ('$fname', '$email', '$username', '$hash','$website', '', " . time() . ", '$reset_code', 0)";
       
       if ($connectdb ->query($sql) === TRUE) {
-        $msg = 'You have registered successfully, click <a href="mail.google.com" target="external"><b>Here</b></a> to Verify';
+        $msg = 'You have registered successfully, click <a href="https://mail.google.com" target="external"><b>Here</b></a> to Verify';
 
         $message = "You have beed registered successfully. Click the link below to verify your account: <br><br> 
-        <a href='https://www.sociolify.dev/process/verify_account.php?code=$reset_code'>Click here to verify</a>";
+        <a href='https://www.sociolify.herokuapp.com/process/verify_account.php?code=$reset_code'>Click here to verify</a>";
 
         //sending email to the user
         send_mail($email, $message);

@@ -50,19 +50,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
      if ($result->num_rows > 0) {
        //output error
        $row = $result->fetch_assoc();
+        
 
+       if ($row['is_active'] == 1){
        // Check if records match
        if (password_verify($password, $row['password'])) {
 
         // Implementing cookie
         if (isset($_POST["checkbox"])) {
-          setcookie($cookie_user, $username, time() + (86400 * 30), "/");
-          setcookie($cookie_pass, $password, time() + (86400 * 30), "/");
+          setcookie("username", $cookie_user, $username, time() + (86400 * 30), "/");
+          setcookie("password",$cookie_pass, $password, time() + (86400 * 30), "/");
         }
-         
-         $_COOKIE["cookie value"];
-         setrawcookie(); 
-
+        
          // Creating Sessions for users
          $_SESSION['id'] = $row['id'];
          $_SESSION['username'] = $row['username'];
@@ -73,14 +72,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
          exit();
        }else{
          $passwordError = "Password is invalid, try again";
+         $password = "";
          $count++;
        }
+      }else{
+        $msg = "You need to verify your account first";
+      }
      }else {
        $msg = "Username does not exist";
        $username = $password = "";
        $count++;
      }
   }
+
   
 }
 
@@ -144,7 +148,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               echo '<div class="alert alert-danger" role="alert">';
               echo  $msg;
               echo '</div>';
-          }?>
+          }else if (isset($_GET['message'])){
+            echo '<hr>';
+            echo '<div class="alert alert-success" role="alert">';
+            echo  $_GET['message'];
+            echo '</div>';
+          }
+          ?>
         </p>
        <div class="my-form">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
@@ -172,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           </div>
           <button type="submit" class="btn btn-submit">LOGIN</button>
         </form>
-        <p><a href="login.php">Forget your password?</a></p>
+        <p><a href="forget_password.php">Forget your password?</a></p>
         <p>Don't have an account? <a href="register.php">Register Here</a></p>
        </div>
      </div>

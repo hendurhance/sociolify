@@ -514,7 +514,9 @@ footer p{
 }
 
 .dashboard-content img{
-    width: 100%;
+    margin-left: 7em;
+    width: 60%;
+    /* width: 10em !important; */
     border-radius: 40px;
     box-shadow: 0px 0px 30px 20px rgba(112, 110, 110, 0.04);
 }
@@ -609,7 +611,11 @@ footer p{
 }
 
 
-
+@media screen and (max-width: 425px){
+    .dashboard-content img{
+        margin-left: 5em;
+    }
+}
 
 
 /* 375 SCREEN */
@@ -629,6 +635,14 @@ footer p{
     
     .contact-section, .contact-section-form{
         margin-top: 2em;
+    }
+
+    .dashboard-content img{
+        margin-left: 4em;
+    }
+
+    .dashboard-content img{
+        margin-left: 4em;
     }
 }
 

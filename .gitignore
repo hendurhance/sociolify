@@ -1,3 +1,4 @@
 # Ignore files
 
-require/functions.php
+#require/functions.php
+#require/config.php
