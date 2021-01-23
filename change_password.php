@@ -12,7 +12,7 @@
   $old_passwordError = $new_passwordError = $confirm_passwordError = "";
 
   $count = 0;
-  $msg = '';
+  $msg = "";
 
    //Check if they are signed in already
   if(!isset($_SESSION['id'])){
